@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-map('n', '<LocalLeader>c', ':VimtexCompileSS<CR>', {silent = true})
+map('n', '<LocalLeader>c', ':w<CR>:VimtexCompileSS<CR>', {silent = true})
 
 vim.opt_local.autoindent  = true -- align the new line indent with the previous line
 vim.opt_local.expandtab   = true -- insert spaces when hitting TABs

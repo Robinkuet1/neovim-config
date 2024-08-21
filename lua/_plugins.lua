@@ -4,11 +4,29 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- lsp
-  use 'neovim/nvim-lspconfig'
+  -- colortheme
+  use 'navarasu/onedark.nvim'
 
-  -- code completion
-  use "ms-jpq/coq_nvim"
+  -- treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
+  -- lsp
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig"
+  }
+
+  -- file tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
 
   -- Fuzzy finder
   use {
@@ -16,27 +34,38 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- Bufferlist
-  use "roblillack/vim-bufferlist"
+  -- lazygit
+  use({
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    requires = {
+        "nvim-lua/plenary.nvim",
+    },
+  })
 
-  -- Formating
-  use "sbdchd/neoformat"
 
-  -- Status Line
+  -- gitlab
   use {
-    'hoob3rt/lualine.nvim',
-    after = 'nvim-web-devicons',
-    config = function() require "plugins/lualine" end
+    "harrisoncramer/gitlab.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
+      "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
+      'navarasu/onedark.nvim'
+    },
+    build = function()
+      require("gitlab.server").build()
+    end,
+    branch = "develop",
+    config = function()
+      require("diffview") -- We require some global state from diffview
+      local gitlab = require("gitlab")
+      gitlab.setup()
+    end,
   }
 
-  -- Bufferline
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
-
-  -- Indentation Helper
-  use "lukas-reineke/indent-blankline.nvim"
-
-  -- Jupyter
-  use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
   use { 'mhartington/formatter.nvim' }
 
   -- Latex

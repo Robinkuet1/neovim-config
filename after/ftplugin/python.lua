@@ -8,6 +8,3 @@ vim.opt_local.tabstop     = 4    -- a hard TAB displays as 4 columns
 -- Jupyter
 vim.g.magma_automatically_open_output = false
 vim.g.magma_image_provider = "kitty"
-
--- lsp
-require'lspconfig'.pyright.setup{autostart = true}
