@@ -1,3 +1,9 @@
+local status, packer = pcall(require, "packer")
+if (not status) then
+  print("Packer is not installed")
+  return
+end
+
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -13,13 +19,6 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
-  -- lsp
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig"
-  }
-
   -- file tree
   use {
     'nvim-tree/nvim-tree.lua',
@@ -27,11 +26,44 @@ return require('packer').startup(function(use)
     'nvim-tree/nvim-web-devicons', -- optional
     },
   }
+  
+  -- lsp
+  use "neovim/nvim-lspconfig"
+  use "onsails/lspkind.nvim"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/nvim-cmp"
+  use "nvimdev/lspsaga.nvim"
+
+  -- formating
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
+
+  -- snippets
+  use({
+	  "L3MON4D3/LuaSnip",
+	  -- follow latest release.
+	  tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	  -- install jsregexp (optional!:).
+	  run = "make install_jsregexp"
+  })
+
+  -- html autotag
+  use "windwp/nvim-ts-autotag"
+
+  -- autopairs
+  use "windwp/nvim-autopairs"
 
   -- Fuzzy finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
     requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Lualine
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
   -- lazygit
@@ -43,6 +75,8 @@ return require('packer').startup(function(use)
     },
   })
 
+  -- gitsigns
+  use "lewis6991/gitsigns.nvim"
 
   -- gitlab
   use {
@@ -65,8 +99,6 @@ return require('packer').startup(function(use)
       gitlab.setup()
     end,
   }
-
-  use { 'mhartington/formatter.nvim' }
 
   -- Latex
   use "lervag/vimtex"

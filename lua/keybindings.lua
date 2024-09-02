@@ -13,8 +13,14 @@ map('n', '<leader><leader>', ":lua require('telescope.builtin').find_files({ hid
 map('n', '<leader>fg', require('telescope.builtin').live_grep, {})
 map('n', '<leader>fb', require('telescope.builtin').buffers, {})
 
---
-map("n", "<leader>f", ":Format<CR>")
+-- lsp
+map('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', {})
+map('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', {})
+map('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', {})
+map('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', {})
+map('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', {})
+map('n', 'gr', '<Cmd>Lspsaga rename<CR>', {}) 
+
 
 -- File Tree
 map("n", "<leader>ft", ":NvimTreeOpen<CR>")

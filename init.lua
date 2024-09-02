@@ -3,6 +3,6 @@ require('onedark').setup {
 }
 require('onedark').load()
 
-require('_plugins')
+require('plugins')
 require('keybindings')
 require('options')
