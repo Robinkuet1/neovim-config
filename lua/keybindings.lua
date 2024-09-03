@@ -3,6 +3,16 @@ local map = vim.keymap.set
 vim.g.maplocalleader = "ö"
 vim.g.mapleader = " "
 
+-- saving etc.
+map("n", "<leader>w", ":w<CR>")
+map("n", "<leader>qw", "ZZ")
+map("n", "<leader>qq", "ZQ")
+
+-- file navigation
+vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap-forward)')
+vim.keymap.set({'n', 'x', 'o'}, 'S',  '<Plug>(leap-backward)')
+vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
+
 -- some terminal keybindings
 -- map('t', '<Esc>', "<C-\\><C-n>")
 map('t', '<C-w>', "<C-\\><C-n><C-w>")
@@ -12,6 +22,7 @@ map('n', '<LocalLeader>t', '<C-w>v:terminal<CR>', {silent = true})
 map('n', '<leader><leader>', ":lua require('telescope.builtin').find_files({ hidden = true })<CR>", {})
 map('n', '<leader>fg', require('telescope.builtin').live_grep, {})
 map('n', '<leader>fb', require('telescope.builtin').buffers, {})
+map('n', '<leader>p', ":Telescope zoxide list<CR>", {})
 
 -- lsp
 map('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', {})

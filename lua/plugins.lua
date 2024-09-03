@@ -27,6 +27,14 @@ return require('packer').startup(function(use)
     },
   }
   
+  -- file navigation
+  use {
+    "ggandor/leap.nvim",
+    requires = {
+      "tpope/vim-repeat"
+    }
+  }
+
   -- lsp
   use "neovim/nvim-lspconfig"
   use "onsails/lspkind.nvim"
@@ -55,6 +63,12 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- trouble
+  use {
+    "folke/trouble.nvim",
+    cmd = "Trouble"
+  }
+
   -- snippets
   use({
 	  "L3MON4D3/LuaSnip",
@@ -75,6 +89,9 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  -- telescope zoxide
+  use "jvgrootveld/telescope-zoxide"
 
   -- Lualine
   use {
