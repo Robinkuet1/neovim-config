@@ -39,6 +39,22 @@ return require('packer').startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'MunifTanjim/prettier.nvim'
 
+  -- comments
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+
+  -- comment annotations
+  use {
+    "danymat/neogen",
+    config = function()
+        require('neogen').setup {}
+    end,
+  }
+
   -- snippets
   use({
 	  "L3MON4D3/LuaSnip",
@@ -78,28 +94,9 @@ return require('packer').startup(function(use)
   -- gitsigns
   use "lewis6991/gitsigns.nvim"
 
-  -- gitlab
-  use {
-    "harrisoncramer/gitlab.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-      "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
-      'navarasu/onedark.nvim'
-    },
-    build = function()
-      require("gitlab.server").build()
-    end,
-    branch = "develop",
-    config = function()
-      require("diffview") -- We require some global state from diffview
-      local gitlab = require("gitlab")
-      gitlab.setup()
-    end,
-  }
-
   -- Latex
   use "lervag/vimtex"
+
+  -- lua config code completion
+  use "folke/neodev.nvim"
 end)

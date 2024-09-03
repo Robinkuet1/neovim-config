@@ -21,6 +21,19 @@ map('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', {})
 map('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', {})
 map('n', 'gr', '<Cmd>Lspsaga rename<CR>', {}) 
 
+-- Comments
+--[[ 
+NORMAL mode
+`gcc` - Toggles the current line using linewise comment
+`gbc` - Toggles the current line using blockwise comment
+`[count]gcc` - Toggles the number of line given as a prefix-count using linewise
+`[count]gbc` - Toggles the number of line given as a prefix-count using blockwise
+`gc[count]{motion}` - (Op-pending) Toggles the region using linewise comment
+`gb[count]{motion}` - (Op-pending) Toggles the region using blockwise comment
+VISUAL mode
+`gc` - Toggles the region using linewise comment
+`gb` - Toggles the region using blockwise Comments
+]]
 
 -- File Tree
 map("n", "<leader>ft", ":NvimTreeOpen<CR>")
@@ -29,12 +42,3 @@ map("n", "<leader>ft", ":NvimTreeOpen<CR>")
 map('n', '<leader>gg', ':LazyGit<CR>')
 map('n', '<leader>gf', ':LazyGitFilter<CR>')
 map('n', '<leader>gc', ':LazyGitFilterCurrentFile<CR>')
-
--- Gitlab
-require("diffview")
-local gitlab = require("gitlab")
-map("n", "<leader>glc", gitlab.choose_merge_request)
-map("n", "<leader>glp", gitlab.pipeline)
-map("n", "<leader>glo", gitlab.summary)
-map("n", "<leader>glms", ':lua require("gitlab").merge({squash = true, delete_branch = true})')
-map("n", "<leader>glmn", ':lua require("gitlab").merge({squash = false, delete_branch = true})')
