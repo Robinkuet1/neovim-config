@@ -11,10 +11,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- tmux
-  use {
-    "christoomey/vim-tmux-navigator"
-  }
-
+  use "christoomey/vim-tmux-navigator"
+  use 'RyanMillerC/better-vim-tmux-resizer'
 
   -- colortheme
   use 'navarasu/onedark.nvim'

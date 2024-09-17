@@ -21,3 +21,7 @@ nvim_lsp.tsserver.setup {
   cmd = { "typescript-language-server", "--stdio" }
 } 
 
+
+-- Fish
+require'lspconfig'.fish_lsp.setup{}
+

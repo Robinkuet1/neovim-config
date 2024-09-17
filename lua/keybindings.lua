@@ -14,6 +14,11 @@ map("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>")
 map("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>")
 map("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>")
 
+map("n", "<M-h>", "<Cmd>TmuxResizeLeft<CR>")
+map("n", "<M-j>", "<Cmd>TmuxResizeDown<CR>")
+map("n", "<M-k>", "<Cmd>TmuxResizeUp<CR>")
+map("n", "<M-l>", "<Cmd>TmuxResizeRight<CR>")
+
 -- file navigation
 map({'n', 'x', 'o'}, 's',  '<Plug>(leap-forward)')
 map({'n', 'x', 'o'}, 'S',  '<Plug>(leap-backward)')
