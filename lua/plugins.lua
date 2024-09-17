@@ -10,6 +10,12 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- tmux
+  use {
+    "christoomey/vim-tmux-navigator"
+  }
+
+
   -- colortheme
   use 'navarasu/onedark.nvim'
 
@@ -113,6 +119,9 @@ return require('packer').startup(function(use)
 
   -- Latex
   use "lervag/vimtex"
+
+  -- Latex equations
+  use 'jbyuki/nabla.nvim'
 
   -- Markdown
   use({

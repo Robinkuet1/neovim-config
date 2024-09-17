@@ -8,10 +8,16 @@ map("n", "<leader>w", ":w<CR>")
 map("n", "<leader>qw", "ZZ")
 map("n", "<leader>qq", "ZQ")
 
+-- tmux
+map("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>")
+map("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>")
+map("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>")
+map("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>")
+
 -- file navigation
-vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap-forward)')
-vim.keymap.set({'n', 'x', 'o'}, 'S',  '<Plug>(leap-backward)')
-vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
+map({'n', 'x', 'o'}, 's',  '<Plug>(leap-forward)')
+map({'n', 'x', 'o'}, 'S',  '<Plug>(leap-backward)')
+map({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
 
 -- some terminal keybindings
 -- map('t', '<Esc>', "<C-\\><C-n>")
